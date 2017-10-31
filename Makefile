@@ -10,14 +10,14 @@ LD_FLAGS=
 # (OSX) : dylib vs shared object
 # use -shared option to create so file &
 # -dynamiclib to create *.dylib
-SHARED_LIB=-shared
+SHARED_LIB=-dynamiclib -Wl
 
 all: out-dirs main
 
 out-dirs:
 	mkdir -p obj
 
-main: obj/main.o libmaths.so
+main: obj/main.o libmaths.dylib
 	$(CC) $(LD_FLAGS) $< -o $@ -L. -lmaths
 
 obj/main.o: src/main.cc
@@ -26,8 +26,10 @@ obj/main.o: src/main.cc
 obj/math.o: lib/math.cc
 	$(CC) -c $< $(CC_FLAGS) -o $@
 
-libmaths.so: obj/math.o
-	$(CC) $(SHARED_LIB) $< -o $@ --version-script=libmaths.version
+# version-script is not supported on OSX.
+# try it out with ubuntu or linux systems.
+libmaths.dylib: obj/math.o
+	$(CC) $(SHARED_LIB) $< -o $@ # --version-script=libmaths.so.map
 
 
 # phony targets
