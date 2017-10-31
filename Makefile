@@ -27,7 +27,7 @@ obj/math.o: lib/math.cc
 	$(CC) -c $< $(CC_FLAGS) -o $@
 
 libmaths.so: obj/math.o
-	$(CC) $(SHARED_LIB) $< -o $@ # --version-script=libmaths.version
+	$(CC) $(SHARED_LIB) $< -o $@ --version-script=libmaths.version
 
 
 # phony targets

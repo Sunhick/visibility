@@ -8,10 +8,10 @@ int main(int argc, char *argv[])
 {
   cout << "Welcome! Demo of controlling the visibility of shared object" << endl;
 
-  int k = add(10, 10);
-  cout << "sum(10, 10) = " << k << endl;
+  int result = add(10, 10);
+  cout << "sum(10, 10) = " << result << endl;
 
-  k = sub(10, 10);
-  cout << "diff(10, 10) = " << k << endl;
+  result = sub(10, 10);
+  cout << "diff(10, 10) = " << result << endl;
   return 0;
 }
