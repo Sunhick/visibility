@@ -1,6 +1,10 @@
 # Author : Sunil
 CC=g++
-CC_FLAGS=-fPIC 
+
+# play with toggling HIDDEN flag.
+# to understand the visibility=hidden, default behaviour
+CC_FLAGS=-fPIC # -DHIDDEN
+
 LD_FLAGS=
 
 # (OSX) : dylib vs shared object
